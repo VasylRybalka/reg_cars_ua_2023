@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Збільшено шрифт у 1,5 рази */
+    display: flex;
+    height: calc(100vh - 40px); /* Враховуючи відступи по периметру */
+    overflow: hidden; /* Прибирає зовнішні бігунки */
+    margin: 20px; /* Відступи по периметру сторінки */
+}
+#brands {
+    flex: 0 0 200px; /* Ширина лівого поля 200 пікселів */
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+}
+#models {
+    flex-grow: 1;
+    padding: 10px 10px 0px 10px; /* Додає відступ знизу для підняття бігунка */
+    overflow-x: auto;
+    overflow-y: auto;
+}
+#tableTitle {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 24px; /* Збільшено шрифт */
+    color: #333;
+}
+.brand {
+    cursor: pointer;
+    padding: 8px 16px; /* Збільшено padding */
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    width: 150px; /* Ширина кнопок 150 пікселів */
+    background-color: #fff; /* Білі кнопки */
+    color: #007BFF; /* Синій текст */
+    text-align: center;
+}
+.brand.active {
+    background-color: #007BFF;
+    color: #fff;
+}
+.brand:hover {
+    background-color: #007BFF; /* Синій колір при наведенні */
+    color: #fff; /* Білий текст при наведенні */
+}
+table {
+    width: max-content;
+    border-collapse: collapse;
+    position: relative;
+}
+th, td {
+    border: 1px solid #ccc; /* Тонка лінія для всіх клітинок */
+    padding: 3px; /* Збільшено padding */
+    text-align: center;
+    width: 30px; /* Встановлює ширину комірки */
+    height: 16px; /* Встановлює висоту комірки */
+    font-size: 12px; /* Збільшено шрифт */
+}
+th {
+    background-color: #d0e7ff; /* Світло синій колір для верхнього рядка */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* Додає тінь для читабельності */
+    border: 2px solid #000; /* Рамка для заголовків */
+}
+td.highlighted {
+    border: 1px solid #ccc; /* Тонка рамка для внутрішніх комірок */
+    background-color: #f9f9f9; /* Інший колір для фокусування */
+}
+td.left-highlighted,
+td.right-highlighted {
+    background-color: #d0e7ff !important; /* Світло синій колір для першого і останнього стовпця */
+    color: #000 !important; /* Чорний текст */
+}
+td.left-highlighted {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    box-shadow: 2px 0 2px -1px rgba(0, 0, 0, 0.4); /* Додає тінь для читабельності */
+    border-left: 2px solid #000; /* Товста ліва лінія */
+    width: 60px; /* Ширина комірок у першому стовпці */
+}
+td.right-highlighted {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    box-shadow: -2px 0 2px -1px rgba(0, 0, 0, 0.4); /* Додає тінь для читабельності */
+    border-right: 2px солід #000; /* Товста права лінія */
+}
+tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+tfoot tr {
+    position: sticky;
+    bottom: 0; /* Нижній рядок на висоті 0 пікселів від низу */
+    background-color: #fff3cd; /* Світло жовтий колір для нижнього рядка */
+    color: #000; /* Чорний текст для нижнього рядка */
+    z-index: 2;
+    box-shadow: 0 -2px 2px -1px rgba(0, 0, 0, 0.4); /* Додає тінь для читабельності */
+    border-top: 2px solid #000; /* Рамка для рядка Total */
+}
+tfoot td {
+    font-weight: bold;
+    background-color: #fff3cd; /* Світло жовтий колір для нижнього рядка */
+    border: 2px solid #000; /* Чорна рамка для клітинок у нижньому рядку */
+}
+tfoot tr td:last-child {
+    border-right: 2px solid #000; /* Чорна рамка справа */
+}
+.button {
+    display: inline-block;
+    padding: 8px 16px; /* Збільшено padding */
+    font-size: 12px; /* Збільшено шрифт */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #007BFF; /* Синій текст */
+    background-color: #fff; /* Білий фон */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px; /* Ширина кнопок 150 пікселів */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+.button:hover {
+    background-color: #007BFF; /* Синій фон при наведенні */
+    color: #fff; /* Білий текст при наведенні */
+}
+::-webkit-scrollbar {
+    height: 10px; /* Менша товщина нижнього бігунка */
+    width: 10px; /* Менша ширина вертикального бігунка */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Світліший колір бігунка */
+    border-radius: 10px; /* Округлість бігунка */
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Колір бігунка при наведенні */
+}
