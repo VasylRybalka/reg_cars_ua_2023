@@ -1,18 +1,29 @@
 function getColor(value) {
     if (value === 0) return ''; // No color for zero values
-    else if (value <= 10) return '#a6f4de';
-    else if (value <= 250) return '#4df0c4';
-    else if (value <= 400) return '#09d2ab'; // Mid green
-    else if (value <= 500) return '#f9ed69'; // Light yellow
-    else if (value <= 750) return '#f4e04d'; // Yellow
-    else if (value <= 1000) return '#ecc802'; // Dark yellow
-    else if (value <= 2000) return '#ffcfdf';
-    else if (value <= 3000) return '#ff9baf';
-    else if (value <= 5000) return '#ff798f';
-    else if (value <= 7500) return '#ff576f';
-    else if (value <= 9000) return '#ff354f';
-    else if (value <= 10000) return '#ff1330'; // Light red
-    else return '#e6102b'; // Hottest red
+if (value == 1) return '#a6f4de'; // Light green
+else if (value <= 9) return '#86e8c6'; // Lighter green
+else if (value <= 49) return '#4df0c4'; // Green
+else if (value <= 99) return '#09d2ab'; // Dark green
+
+
+else if (value <= 199) return '#f9ed69'; // Light yellow
+else if (value <= 499) return '#f6e254'; // Lighter yellow
+else if (value <= 749) return '#f4e04d'; // Yellow
+else if (value <= 999) return '#ecc802'; // Dark yellow
+
+
+else if (value <= 1999) return '#ffcfdf'; // Light pink
+else if (value <= 2999) return '#ffb7c7'; // Light pink-red
+else if (value <= 3999) return '#ff9fb0'; // Pink-red
+else if (value <= 4999) return '#ff8798'; // Mid pink-red
+else if (value <= 5999) return '#ff6f80'; // Darker pink-red
+else if (value <= 6999) return '#ff5768'; // Light red
+else if (value <= 7999) return '#ff3f50'; // Red
+else if (value <= 8999) return '#ff2738'; // Dark red
+else if (value <= 9999) return '#ff0f20'; // Darker red
+else if (value <= 10000) return '#e0001e'; // Darkest red
+
+    else return '#e0001e'; // Darkest red
 }
 
 function formatNumber(number) {
@@ -21,7 +32,7 @@ function formatNumber(number) {
 
 function showModels(brand) {
     const modelsList = document.getElementById('modelsList');
-    modelsList.innerHTML = ''; // Очищення попередніх моделей
+    modelsList.innerHTML = '';
 
     const tableTitle = document.getElementById('tableTitle');
     const totalCars = carModels[brand].models.reduce((sum, model) => {
@@ -80,7 +91,7 @@ function showModels(brand) {
 
 function showAllModels() {
     const modelsList = document.getElementById('modelsList');
-    modelsList.innerHTML = ''; // Очищення попередніх моделей
+    modelsList.innerHTML = '';
 
     const tableTitle = document.getElementById('tableTitle');
     const totalCars = Object.values(carModels).reduce((sum, brand) => {
@@ -120,7 +131,6 @@ function showAllModels() {
         brands.push({ name: brand, totals: totals, totalModels: totalModels });
     }
 
-    // Сортуємо бренди за загальною кількістю моделей у порядку спадання
     brands.sort((a, b) => b.totalModels - a.totalModels);
 
     brands.forEach(brand => {
@@ -174,10 +184,8 @@ function initializeBrands() {
         brands.push({ name: brand, total: total });
     }
 
-    // Сортуємо бренди за кількістю автомобілів у порядку спадання
     brands.sort((a, b) => b.total - a.total);
 
-    // Додаємо відсортовані бренди в DOM
     brands.forEach(brand => {
         const brandDiv = document.createElement('div');
         brandDiv.className = 'brand';
@@ -186,10 +194,8 @@ function initializeBrands() {
         brandsDiv.appendChild(brandDiv);
     });
 
-    // Додаємо обробник подій для заголовка "ALL BRANDS"
     const brandsHeader = document.getElementById('brandsHeader');
     brandsHeader.onclick = showAllModels;
 }
 
-// Initial call to display brands
 document.addEventListener('DOMContentLoaded', initializeBrands);
